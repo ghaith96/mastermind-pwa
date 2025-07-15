@@ -1,0 +1,123 @@
+/* Theme variables for light and dark mode */
+
+/* Light theme (default) */
+:root {
+  /* Base colors */
+  --color-background: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F0F2F5;
+  --color-primary: #3949AB;
+  --color-primary-light: rgba(57, 73, 171, 0.15);
+  --color-primary-dark: #303F9F;
+  --color-secondary: #CFD8DC;
+  --color-secondary-light: #ECEFF1;
+  --color-secondary-dark: #B0BEC5;
+  --color-text: #212121;
+  --color-text-light: #5F6368;
+  --color-text-on-dark: #FFFFFF;
+  --color-success: #2E7D32;
+  --color-error: #D32F2F;
+  --color-warning: #F57C00;
+  
+  /* Game specific colors */
+  --color-board-background: #FFFFFF;
+  --color-board-border: #E0E0E0;
+  --color-black-peg: #000000;
+  --color-white-peg: #FFFFFF;
+  --color-white-peg-border: rgba(0, 0, 0, 0.3);
+  
+  /* UI elements */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  /* Base colors */
+  --color-background: #121212;
+  --color-surface: #1E1E1E;
+  --color-surface-alt: #2A2A2A;
+  --color-primary: #6666FF;
+  --color-primary-light: rgba(102, 102, 255, 0.2);
+  --color-primary-dark: #5555EE;
+  --color-secondary: #444444;
+  --color-secondary-light: #555555;
+  --color-secondary-dark: #333333;
+  --color-text: #EEEEEE;
+  --color-text-light: #AAAAAA;
+  --color-text-on-dark: #FFFFFF;
+  --color-success: #66BB6A;
+  --color-error: #EF5350;
+  --color-warning: #FFA726;
+  
+  /* Game specific colors */
+  --color-board-background: #1E1E1E;
+  --color-board-border: #444444;
+  --color-black-peg: #000000;
+  --color-white-peg: #FFFFFF;
+  --color-white-peg-border: rgba(255, 255, 255, 0.7);
+  
+  /* UI elements */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.3);
+  
+  /* Override for better contrast in dark mode */
+  --color-red: #FF6666;
+  --color-blue: #6666FF;
+  --color-green: #66FF66;
+  --color-yellow: #FFFF66;
+  --color-purple: #FF66FF;
+  --color-orange: #FFA066;
+  --color-brown: #A05533;
+  --color-pink: #FFD8E1;
+}
+
+/* Apply theme transition to all elements */
+* {
+  transition: var(--theme-transition);
+}
+
+/* Ensure proper contrast for inputs and form elements in dark mode */
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea,
+[data-theme="dark"] button {
+  color: var(--color-text);
+  background-color: var(--color-surface-alt);
+  border-color: var(--color-secondary);
+}
+
+/* Ensure proper contrast for links in dark mode */
+[data-theme="dark"] a {
+  color: var(--color-primary);
+}
+
+/* Ensure proper contrast for code blocks in dark mode */
+[data-theme="dark"] code,
+[data-theme="dark"] pre {
+  background-color: var(--color-surface-alt);
+  border-color: var(--color-secondary);
+}
+
+/* Ensure proper contrast for dialog backdrops in dark mode */
+[data-theme="dark"] .dialog-backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Ensure proper contrast for toast components in dark mode */
+[data-theme="dark"] .toast {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* Ensure proper contrast for modal components in dark mode */
+[data-theme="dark"] .modal {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-secondary);
+}

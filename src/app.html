@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<!-- PWA Meta Tags -->
+		<meta name="theme-color" content="#4444ff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-mobile-web-app-title" content="Mastermind" />
+		<meta name="description" content="Classic Mastermind puzzle game optimized for mobile" />
+		
+		<!-- Manifest -->
+		<link rel="manifest" href="%sveltekit.assets%/manifest.json" />
+		
+		<!-- Apple Touch Icons -->
+		<link rel="apple-touch-icon" href="%sveltekit.assets%/icon-192.png" />
+		
+		<!-- Prevent flash of unstyled content by setting theme early -->
+		<script>
+			(function() {
+				// Check for saved theme preference or use system preference
+				const savedTheme = localStorage.getItem('mastermind-theme');
+				const theme = savedTheme 
+					? JSON.parse(savedTheme)
+					: (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+				
+				// Apply theme to html element
+				document.documentElement.setAttribute('data-theme', theme === 'system'
+					? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+					: theme);
+			})();
+		</script>
+		
+		<!-- Critical CSS to prevent flash of unstyled content -->
+		<style>
+			/* Apply dark theme immediately if data-theme is dark */
+			[data-theme="dark"] {
+				background-color: #121212;
+				color: #EEEEEE;
+			}
+			
+			[data-theme="dark"] body {
+				background-color: #121212;
+				color: #EEEEEE;
+			}
+			
+			/* Light theme base styles */
+			[data-theme="light"] {
+				background-color: #F8F9FA;
+				color: #212121;
+			}
+			
+			[data-theme="light"] body {
+				background-color: #F8F9FA;
+				color: #212121;
+			}
+			
+			/* Hide content until styles are loaded */
+			.theme-transition {
+				opacity: 0;
+				transition: opacity 0.2s ease;
+			}
+			
+			.theme-ready .theme-transition {
+				opacity: 1;
+			}
+		</style>
+		
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
